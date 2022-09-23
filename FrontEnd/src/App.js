@@ -1,8 +1,9 @@
 
 
-import Chat from './Components/Chat';
+// import Chat from './Components/Chat';
 import Navbarr from './Components/Navbarr'
 import Messages from './Components/Messages'
+import Chat from './Components/Chat';
 function App() {
   
   return (
