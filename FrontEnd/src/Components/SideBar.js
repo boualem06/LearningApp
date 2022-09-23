@@ -11,7 +11,7 @@ import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined'
 import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
 export const SideBar = () => {
   return (
-    <div className='flex-1 h-[100vh] sticky top-0 '>
+    <div className='flex-1 hidden xl:block h-[100vh] sticky top-0 overflow-hidden '>
         <div className='flex flex-col justify-between h-full' >
           <div className='px-[18px] py-[26px]'>
               <div className='flex gap-[5px] items-center mb-[25px]'>
@@ -40,7 +40,7 @@ export const SideBar = () => {
               </div>
               <div className='text-[#6E6E6E] px-[7.5px] flex items-center gap-[20px] cursor-pointer mb-4'>
                 <CalendarTodayOutlinedIcon/>
-                Calandar
+                Calendar
               </div>
           </div>
           <div>

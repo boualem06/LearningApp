@@ -2,12 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNone from '@material-ui/icons/NotificationsNone'
 import Avatar from '@material-ui/core/Avatar';
 import SettingsOutlined from '@material-ui/icons/SettingsOutlined'
+import Drawer from './Drawer';
 
 const useStyles = makeStyles((theme) => ({
     iconButton: {
@@ -32,7 +32,8 @@ export default function Navbarr() {
     const classes = useStyles();
 
     return (
-        <div className='py-2 px-4 bg-ed-600 flex items-center justify-between'>
+        <div className='py-2 bg-white sticky top-0 md:px-4 bg-ed-600 flex items-center justify-between'>
+            <Drawer></Drawer>
             <Paper component="form" className=" w-1/2 flex justify-between px-2 py-1 items-center">
 
                 <InputBase
@@ -46,14 +47,14 @@ export default function Navbarr() {
 
             </Paper>
             <div className='flex '>
-                <IconButton style={{marginRight:18}}  className={classes.iconButton} aria-label="search">
-                    < NotificationsNone></NotificationsNone>
+                <IconButton   className={classes.iconButton} aria-label="search">
+                    < NotificationsNone className='md:mr-[18px]'></NotificationsNone>
                 </IconButton>
-                <div style={{background:"#e3f2fd"}} className=' flex px-2 py-1 rounded-full'>
-                    <Avatar className='mr-4 hover:cursor-pointer'  >N</Avatar>
-                    <IconButton  className={classes.iconButton2} aria-label="search">
+                <div className='bg-[#e3f2fd] flex px-2 py-1 rounded-full'>
+                    <Avatar className='md:mr-4 hover:cursor-pointer'  >N</Avatar>
+                    <div className='hidden md:block'><IconButton  className={classes.iconButton2} aria-label="search">
                         < SettingsOutlined></SettingsOutlined>
-                    </IconButton>
+                    </IconButton></div>
                     
                 </div>
 

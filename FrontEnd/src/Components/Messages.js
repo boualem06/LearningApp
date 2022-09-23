@@ -18,22 +18,9 @@ const Messages = () => {
             message: "Hello world",
             time: "09:08 AM"
         }
-        ,
-        {
-            name: "Hamroune Boualem",
-            message: "Hello world",
-            time: "09:08 AM"
-        }
-        ,
-        {
-            name: "Hamroune Boualem",
-            message: "Hello world",
-            time: "09:08 AM"
-        }
     ])
     return (
-        <div className=" w-full px-10 py-10" >
-            <div style={{ boxShadow: "5px 9px 6px gray" }} className="w-1/3 border py-4 px-4 rounded-2xl">
+            <div style={{ boxShadow: "5px 9px 6px gray" }} className="bg-white border py-4 px-4 rounded-2xl">
                 <div className="flex">
                     <h1 className=" text-xl font-bold">Messages</h1>
                     < button className='bg-red-400 ml-4 rounded-lg text-white font-bold px-1 items-center'> <ReplayOutlined fontSize='small'></ReplayOutlined> new</button>
@@ -53,7 +40,6 @@ const Messages = () => {
                 ))}
                 <button style={{ background: "#03c9d7" }} className='text-white font-bold  rounded py-2 w-full shadow '>See all messages</button>
             </div>
-        </div>
     )
 }
 
