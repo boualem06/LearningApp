@@ -8,5 +8,7 @@ const {protect}=require('../midleware/authmidleware')
 router.post("/register",userControllers.registerUser) ;
 router.post('/login',userControllers.loginUser) ;
 router.get('/me',protect,userControllers.me)
+router.get('/:userId',userControllers.getUser) ;
+
 module.exports=router ;
 
