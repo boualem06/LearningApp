@@ -21,11 +21,8 @@ const Conversation = ({ele,user}) => {
                
                let data = await response.json();
                setreceiver(data) ;
-               console.log(data);
-
         }
         getreceiver() ;
-
     }, [])
 
     
@@ -35,7 +32,7 @@ const Conversation = ({ele,user}) => {
 
 
     return (
-        <div onClick={()=>{}} className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
+        <div onClick={()=>{console.log("clicked")}} className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
             <Avatar className='mr-4'>
                 {receiver[0]}
             </Avatar>
