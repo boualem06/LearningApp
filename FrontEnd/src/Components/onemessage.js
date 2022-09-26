@@ -1,5 +1,5 @@
 import { Avatar } from '@material-ui/core';
-const Onemessage=({own})=>{
+const Onemessage=({text,own})=>{
 
     return(
         <div style={{ width: "100%", marginBottom: 10 }} className={own ? " flex justify-end mr-2  " : "  ml-2 flex  justify-begin"}>
@@ -7,7 +7,8 @@ const Onemessage=({own})=>{
             <div className='flex mr-2'>
 
                 <h1 className={own ? "bg-blue-500 px-4 py-2 rounded-tl-lg rounded-br-lg rounded-bl-lg text-white" : "bg-white px-4 py-2 rounded-tr-lg rounded-br-lg rounded-bl-lg "} >
-                    hellllloooo how are you doing today!!!!!!!
+                    
+                    {text}
                 </h1>
                 <Avatar className='ml-2'> B</Avatar>
             </div>
@@ -18,7 +19,7 @@ const Onemessage=({own})=>{
                 </div>
 
                 <h1 className={own ? "bg-blue-500 px-4 py-2 rounded-tl-lg rounded-br-lg rounded-bl-lg text-white" : "bg-white px-4 py-2 rounded-tr-lg rounded-br-lg rounded-bl-lg "} >
-                    hellllloooo how are you doing today
+                    {text}
                 </h1>
 
             </div>

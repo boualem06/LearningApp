@@ -1,7 +1,10 @@
 import { Avatar } from '@material-ui/core';
 import { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { setConversation } from "../features/ConversationSlice";
 const Conversation = ({ele,user}) => {
     const [receiver,setreceiver]=useState({}) ;
+    const dispatch = useDispatch();
     useEffect(() => {
        
         let receiver2= ele.members[1]===user.id  ? ele.members[0] : ele.members[1] ;
@@ -21,18 +24,20 @@ const Conversation = ({ele,user}) => {
                
                let data = await response.json();
                setreceiver(data) ;
+               console.log(data);
+
         }
         getreceiver() ;
+
     }, [])
+
 
     
 
 // get the conversation of the current user  with the user where we clicked   ;
-
-
-
+ 
     return (
-        <div onClick={()=>{console.log("clicked")}} className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
+        <div onClick={()=>{dispatch(setConversation(ele));}} className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
             <Avatar className='mr-4'>
                 {receiver[0]}
             </Avatar>

@@ -2,13 +2,17 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import Conversation from './conversation';
 import { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../features/currentUser";
 const Navbarchat=()=>{
     const [own, setOwn] = useState(true);
+
+    
+    const dispatch = useDispatch();
     const [user, setUser] = useState({});
     const [list, setList] = useState([])
     useEffect(() => {
         let data = {};
-        //getting the actuel user 
 
 
         // get all the conversations of the current user
@@ -29,6 +33,7 @@ const Navbarchat=()=>{
 
             data = await response.json();
             console.log(data.id)
+            dispatch(setCurrentUser(data)) ;
             setUser(data);
 
 
