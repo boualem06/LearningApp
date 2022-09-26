@@ -1,10 +1,11 @@
 import { Avatar } from '@material-ui/core';
 import { useEffect, useState } from 'react';
-const Conversation = ({ele}) => {
+const Conversation = ({ele,user}) => {
     const [receiver,setreceiver]=useState({}) ;
     useEffect(() => {
-
        
+        let receiver2= ele.members[1]===user.id  ? ele.members[0] : ele.members[1] ;
+        
         // getting the receiver using his ID which is in the conversation(ele)
          const getreceiver = async () => {
             
@@ -13,7 +14,7 @@ const Conversation = ({ele}) => {
                 "User-Agent": "Thunder Client (https://www.thunderclient.com)"
                }
                
-               let response = await fetch("http://localhost:5000/user/"+(ele.members)[1], { 
+               let response = await fetch("http://localhost:5000/user/"+receiver2, { 
                  method: "GET",
                  headers: headersList
                });
@@ -26,8 +27,15 @@ const Conversation = ({ele}) => {
         getreceiver() ;
 
     }, [])
+
+    
+
+// get the conversation of the current user  with the user where we clicked   ;
+
+
+
     return (
-        <div className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
+        <div onClick={()=>{}} className='hover:bg-gray-700 hover:rounded hover:cursor-pointer  flex items-center text-white mb-4'>
             <Avatar className='mr-4'>
                 {receiver[0]}
             </Avatar>
