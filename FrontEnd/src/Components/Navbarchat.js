@@ -23,8 +23,10 @@ const Navbarchat=()=>{
             let headersList = {
                 "Accept": "*/*",
                 "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-                "accestoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmYzNWY5MWRlOWZmZGFkNzE1MWU5ZSIsImlhdCI6MTY2NDMxMjU2MSwiZXhwIjoxNjY2OTA0NTYxfQ.VwddN9vl--XZT6xUVj9lf5VrwW7MLdUhCS9JC9xNbDo"
+                "accestoken": localStorage.getItem('jwt')
             }
+
+            //
 
             let response = await fetch("http://localhost:5000/user/me", {
                 method: "GET",
