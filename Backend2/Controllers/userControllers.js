@@ -82,7 +82,6 @@ const generateToken = (id) => {
 
 //get the actuell user
 const me = async (req, res) => {
-    // console.log(req.user._id) ;
     const {_id,name,email}=await User.findById(req.user.id) ;
     res.status(200).json({
         id:_id,
@@ -97,9 +96,6 @@ const getUser = async (req, res) => {
 
     const user = await User.findById(req.params.userId);
     res.status(200).json(user);
-
-    console.log(req.params.userId);
-    console.log("the end");
 }
 
 

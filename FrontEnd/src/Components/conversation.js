@@ -24,7 +24,6 @@ const Conversation = ({ele,user}) => {
                
                let data = await response.json();
                setreceiver(data) ;
-               console.log(data);
 
         }
         getreceiver() ;
