@@ -4,6 +4,7 @@ import Conversation from './conversation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../features/currentUser";
+import Divider from '@material-ui/core/Divider';
 const Navbarchat=()=>{
     const [own, setOwn] = useState(true);
 
@@ -11,6 +12,7 @@ const Navbarchat=()=>{
     const dispatch = useDispatch();
     const [user, setUser] = useState({});
     const [list, setList] = useState([])
+    const [Listusers,setListusers]=useState([])
     useEffect(() => {
         let data = {};
 
@@ -55,7 +57,27 @@ const Navbarchat=()=>{
 
         }
 
-
+        const getUsers=async()=>{
+            let headersList = {
+                "Accept": "*/*",
+                "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+                "accestoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmYzNWY5MWRlOWZmZGFkNzE1MWU5ZSIsImlhdCI6MTY2NDU1NjAyMSwiZXhwIjoxNjY3MTQ4MDIxfQ.lM0KvolzdTPvLIqopGY_NP1S4Wa6IDI-eyuYB7VomXc",
+                "Content-Type": "application/json"
+               }
+               
+              
+               
+               let response = await fetch("http://localhost:5000/user/all", { 
+                 method: "GET",
+                 headers: headersList
+               });
+               
+               let data = await response.json();
+               setListusers(data) ;
+               console.log(data);
+               
+        }
+        getUsers() ;
         getConversation();
     }, [])
 
@@ -68,6 +90,10 @@ const Navbarchat=()=>{
         {list.map((ele) => (
             <Conversation user={user} key={ele._id} ele={ele}></Conversation>
         ))}
+    <div className='bg-gray-400 border-solid border-white'>
+    <Divider ></Divider>
+    </div>
+            
     </div>
     )
 }
