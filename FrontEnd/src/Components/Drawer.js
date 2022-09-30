@@ -5,8 +5,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import MenuIcon from '@material-ui/icons/Menu';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -60,7 +59,7 @@ export default function Drawer() {
       <Button
         onClick={handleClick}
       >
-        <MoreVertIcon/>
+      <MenuIcon/>
       </Button>
       <StyledMenu
         id="customized-menu"

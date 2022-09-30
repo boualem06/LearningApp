@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
         background: "#ede7f6",
         color: "#a58ed3",
         padding: 6,
+
+    },
+    iconButton3: {
+        borderRadius: "25px",
+        padding: 6,
+
     },
     iconButton2: {
         borderRadius: "25px",
@@ -41,16 +47,16 @@ export default function Navbarr() {
                     placeholder="Search For something..."
                     inputProps={{ 'aria-label': 'search google maps' }}
                 />
-                <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                    <SearchIcon />
+                <IconButton type="submit" className={classes.iconButton3} aria-label="search">
+                    <SearchIcon/>
                 </IconButton>
 
             </Paper>
             <div className='flex '>
-                <IconButton   className={classes.iconButton} aria-label="search">
+                {/* <IconButton   className={classes.iconButton} aria-label="search">
                     < NotificationsNone className='md:mr-[18px]'></NotificationsNone>
-                </IconButton>
-                <div className='bg-[#e3f2fd] flex px-2 py-1 rounded-full'>
+                </IconButton> */}
+                <div className='md:bg-[#e3f2fd] flex px-2 py-1 rounded-full'>
                     <Avatar className='md:mr-4 hover:cursor-pointer'  >N</Avatar>
                     <div className='hidden md:block'><IconButton  className={classes.iconButton2} aria-label="search">
                         < SettingsOutlined></SettingsOutlined>

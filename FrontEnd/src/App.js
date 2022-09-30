@@ -6,6 +6,7 @@ import './App.css';
 import { SideBar } from "./Components/SideBar";
 import Navbar from "./Components/Navbarr"
 import Messages from "./Components/Messages"
+import Chat from './Components/Chat'
 import { Quest } from "./Components/Quest";
 function App() {
 
@@ -13,13 +14,15 @@ function App() {
    <div className="flex">
       <SideBar/>
       <div className="flex-[7] bg-[#E3F2FD]">
-        <Navbar/>
-        <div className="flex w-full p-4">
+         <Navbar/>
+        {/*<div className="flex w-full p-4">
           <Quest/>
           <div className="hidden md:block sticky top-20 h-[85vh] flex-[1] ">
             <Messages/>
+            
           </div>
-        </div>
+        </div> */}
+        <Chat></Chat>
       </div>
    </div>
 
