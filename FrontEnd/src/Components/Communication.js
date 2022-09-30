@@ -36,11 +36,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Communication = () => {
     const [message, setMessage] = useState("");
-    const [socket,setSocket]=useState(null) ;
+    // const [socket,setSocket]=useState(null) ;
     const conversation = useSelector((state) => state.conversation.value);
     const currentuser = useSelector((state) => state.currentuser.value);
     const [listMessages, setListMessages] = useState([]);
+    const [arrivalMessage,SetArrivalMessage]=useState({}) ;
+    const socket = useRef();
     const scrollref = useRef();
+ 
+ 
     useEffect(() => {
         const getMessages = async () => {
             let headersList = {
@@ -60,7 +64,19 @@ const Communication = () => {
 
     }, [conversation])
 
+
+
     const sendMessage = async () => {
+
+        const receiverId = await conversation.members.find(member => member !== currentuser.id);
+
+        socket.current.emit("addUser", receiverId);
+
+        socket.current.emit("sendMessage", {
+            senderId: currentuser.id,
+            receiverId,
+            text: message
+        })
 
         let headersList = {
             "Accept": "*/*",
@@ -87,17 +103,49 @@ const Communication = () => {
         setListMessages([...listMessages, data])
     }
 
-    useEffect(()=>{
-        scrollref.current?.scrollIntoView({behavior:"smooth"})
-    },[listMessages])
+
+
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900")
+        socket.current.on("getMessage", data => { 
+            SetArrivalMessage({
+                sender:data.senderId,
+                text:data.text
+              
+            })
+          })
+
+    }, [conversation])
 
     useEffect(()=>{
-        setSocket(io("ws://localhost:8900")) ;
-    },[])
+        arrivalMessage && conversation?.members.includes(arrivalMessage.sender);
+        setListMessages(prev=>[...prev,arrivalMessage])
+    },[arrivalMessage,conversation])
+
+    useEffect(() => {
+       
+        socket.current.emit("addUser", currentuser.id);
+
+        socket.current.on('getUsers', users => {
+            
+        })
+       
+    }, [currentuser])
+
+    useEffect(() => {
+        scrollref.current?.scrollIntoView({ behavior: "smooth" })
+    }, [listMessages])
+
+
+
+
+
+   
+
     const classes = useStyles();
     return (
-       
-        <div style={{ background: "#cbcbe2", width: "100%", height: "100vh" }} className=" pt-2 flex flex-col justify-between relative  ">
+
+        <div style={{ background: "#cbcbe2", width: "100%", height: "100vh" }} className=" pt-2 flex flex-col justify-between   ">
 
             {/* {conversation ? <div> {conversation.members[0]} </div>  : <div>Not yet  </div>} */}
             <div style={{ height: "100%" }} className="overflow-y-scroll">

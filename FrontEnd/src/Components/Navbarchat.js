@@ -34,6 +34,7 @@ const Navbarchat=()=>{
             });
             
             data = await response.json();
+            console.log(data) ;
             dispatch(setCurrentUser(data)) ;
             setUser(data);
 
